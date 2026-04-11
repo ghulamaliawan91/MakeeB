@@ -1,281 +1,1214 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="description" content="جامعہ دارالقرآن للبنین والبنات — نصیرآباد بھیرہ ضلع سرگودھا">
+<title>جامعہ دارالقرآن للبنین والبنات</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Amiri+Quran&family=Amiri:ital,wght@0,400;0,700;1,400&family=Scheherazade+New:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap');
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --g50:#EAF3DE;--g100:#C0DD97;--g200:#97C459;--g600:#3B6D11;--g800:#27500A;--g900:#173404;
-    --t50:#E1F5EE;--t100:#9FE1CB;--t600:#0F6E56;--t800:#085041;
-    --a50:#FAEEDA;--a100:#FAC775;--a600:#854F0B;--a800:#633806;
-  }
-  .app { font-family:'Noto Nastaliq Urdu',serif; direction:rtl; background:var(--color-background-tertiary); min-height:600px; max-width:480px; margin:0 auto; border:0.5px solid var(--color-border-tertiary); border-radius:var(--border-radius-lg); overflow:hidden; display:flex; flex-direction:column; }
-  .header { background:var(--g800); padding:16px 20px 12px; text-align:center; }
-  .header-logo { width:56px;height:56px;background:var(--g100);border-radius:50%;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;font-size:26px;font-family:'Amiri',serif;color:var(--g900);font-weight:700; }
-  .header h1 { font-size:15px;font-weight:700;color:var(--g100);line-height:1.8;font-family:'Noto Nastaliq Urdu',serif; }
-  .header p { font-size:11px;color:var(--g200);margin-top:2px;font-family:'Noto Nastaliq Urdu',serif; }
-  .nav { display:flex;background:var(--color-background-primary);border-bottom:0.5px solid var(--color-border-tertiary);overflow-x:auto;scrollbar-width:none; }
-  .nav::-webkit-scrollbar{display:none;}
-  .nav-btn { flex:1;min-width:64px;padding:10px 4px 8px;border:none;background:transparent;cursor:pointer;font-family:'Noto Nastaliq Urdu',serif;font-size:11px;color:var(--color-text-secondary);display:flex;flex-direction:column;align-items:center;gap:3px;border-bottom:2px solid transparent;transition:color 0.2s,border-color 0.2s; }
-  .nav-btn.active{color:var(--g800);border-bottom-color:var(--g600);}
-  .nav-icon{font-size:17px;line-height:1;}
-  .content{flex:1;overflow-y:auto;padding:16px;}
-  .page{display:none;}
-  .page.active{display:block;}
+/* ==============================
+   ROOT & RESET
+============================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  .hero-card{background:var(--g800);border-radius:var(--border-radius-lg);padding:20px;margin-bottom:14px;text-align:center;}
-  .hero-card .arabic{font-family:'Amiri',serif;font-size:22px;color:var(--g100);line-height:1.7;margin-bottom:8px;}
-  .hero-card p{font-size:12px;color:var(--g200);line-height:1.9;font-family:'Noto Nastaliq Urdu',serif;}
-  .stat-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;}
-  .stat-box{background:var(--t50);border-radius:var(--border-radius-md);padding:12px;text-align:center;}
-  .stat-box .num{font-size:22px;font-weight:700;color:var(--t800);font-family:'Amiri',serif;}
-  .stat-box .lbl{font-size:11px;color:var(--t600);font-family:'Noto Nastaliq Urdu',serif;line-height:1.7;}
-  .info-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:14px 16px;margin-bottom:12px;}
-  .info-card h3{font-size:13px;font-weight:500;color:var(--g800);margin-bottom:8px;font-family:'Noto Nastaliq Urdu',serif;border-bottom:0.5px solid var(--color-border-tertiary);padding-bottom:6px;}
-  .info-card p{font-size:12px;color:var(--color-text-primary);line-height:2;font-family:'Noto Nastaliq Urdu',serif;}
+:root {
+  --green-50:  #EAF3DE;
+  --green-100: #C0DD97;
+  --green-200: #97C459;
+  --green-400: #639922;
+  --green-600: #3B6D11;
+  --green-800: #27500A;
+  --green-900: #173404;
+  --teal-50:   #E1F5EE;
+  --teal-100:  #9FE1CB;
+  --teal-200:  #5DCAA5;
+  --teal-600:  #0F6E56;
+  --teal-800:  #085041;
+  --amber-50:  #FAEEDA;
+  --amber-100: #FAC775;
+  --amber-600: #854F0B;
+  --amber-800: #633806;
+  --gold:      #C9A84C;
+  --gold-light:#F0D080;
 
-  .img-banner{width:100%;height:130px;object-fit:cover;border-radius:var(--border-radius-lg);margin-bottom:12px;display:block;}
-  .img-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
-  .img-grid img{width:100%;height:90px;object-fit:cover;border-radius:var(--border-radius-md);}
+  --font-quran:    'Amiri Quran', serif;
+  --font-arabic:   'Amiri', serif;
+  --font-display:  'Scheherazade New', serif;
+  --font-body:     'Noto Nastaliq Urdu', serif;
 
-  .maqsad-item{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-right:3px solid var(--g600);border-radius:var(--border-radius-md);padding:12px 14px;margin-bottom:10px;}
-  .maqsad-num{display:inline-block;background:var(--g800);color:var(--g50);font-size:11px;font-family:'Amiri',serif;font-weight:700;width:22px;height:22px;border-radius:50%;text-align:center;line-height:22px;margin-left:8px;float:right;}
-  .maqsad-item h4{font-size:13px;font-weight:500;color:var(--g800);font-family:'Noto Nastaliq Urdu',serif;line-height:1.7;margin-bottom:6px;overflow:hidden;}
-  .maqsad-item p{font-size:11px;color:var(--color-text-secondary);font-family:'Noto Nastaliq Urdu',serif;line-height:1.9;}
-  .sub-item{background:var(--g50);border-radius:var(--border-radius-md);padding:8px 10px;margin-top:8px;}
-  .sub-item p{font-size:11px;color:var(--g800);line-height:1.9;font-family:'Noto Nastaliq Urdu',serif;}
-  .sub-label{font-weight:500;color:var(--g600);}
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
 
-  .course-item{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-right:3px solid var(--g600);border-radius:var(--border-radius-md);padding:12px 14px;margin-bottom:10px;display:flex;align-items:flex-start;gap:10px;}
-  .course-icon{width:36px;height:36px;border-radius:50%;background:var(--g50);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
-  .course-text{flex:1;}
-  .course-text h4{font-size:13px;font-weight:500;color:var(--color-text-primary);font-family:'Noto Nastaliq Urdu',serif;line-height:1.6;margin-bottom:2px;}
-  .course-text p{font-size:11px;color:var(--color-text-secondary);font-family:'Noto Nastaliq Urdu',serif;line-height:1.6;}
-  .badge{display:inline-block;font-size:10px;padding:2px 8px;border-radius:99px;font-family:'Noto Nastaliq Urdu',serif;background:var(--g50);color:var(--g800);margin-top:4px;}
-  .section-label{font-size:11px;font-weight:500;color:var(--color-text-secondary);font-family:'Noto Nastaliq Urdu',serif;margin-bottom:10px;padding-right:4px;}
+  --shadow-card: 0 2px 16px rgba(39,80,10,0.08);
+  --shadow-hero: 0 8px 32px rgba(23,52,4,0.18);
 
-  .timeline-item{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start;}
-  .timeline-dot{width:32px;height:32px;border-radius:50%;background:var(--g600);color:var(--g50);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;font-family:'Amiri',serif;}
-  .timeline-body{flex:1;}
-  .timeline-body h4{font-size:12px;font-weight:500;color:var(--color-text-primary);font-family:'Noto Nastaliq Urdu',serif;line-height:1.7;margin-bottom:2px;}
-  .timeline-body p{font-size:11px;color:var(--color-text-secondary);font-family:'Noto Nastaliq Urdu',serif;line-height:1.7;}
-  .timeline-line{width:1px;background:var(--color-border-tertiary);margin:0 15px;height:16px;}
+  --transition: 0.25s cubic-bezier(.4,0,.2,1);
+}
 
-  .founder-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:16px;margin-bottom:12px;display:flex;gap:12px;align-items:flex-start;}
-  .founder-avatar{width:50px;height:50px;border-radius:50%;background:var(--t50);display:flex;align-items:center;justify-content:center;font-size:20px;font-family:'Amiri',serif;color:var(--t800);font-weight:700;flex-shrink:0;}
-  .founder-info h4{font-size:13px;font-weight:500;color:var(--color-text-primary);font-family:'Noto Nastaliq Urdu',serif;line-height:1.6;margin-bottom:3px;}
-  .founder-info p{font-size:11px;color:var(--color-text-secondary);font-family:'Noto Nastaliq Urdu',serif;line-height:1.7;}
+html { scroll-behavior: smooth; }
 
-  .contact-item{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:12px 14px;margin-bottom:10px;display:flex;gap:12px;align-items:center;}
-  .contact-icon{width:36px;height:36px;border-radius:50%;background:var(--a50);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
-  .contact-text h4{font-size:12px;font-weight:500;color:var(--color-text-primary);font-family:'Noto Nastaliq Urdu',serif;}
-  .contact-text p{font-size:11px;color:var(--color-text-secondary);font-family:'Noto Nastaliq Urdu',serif;}
-  .dua-box{background:var(--a50);border-radius:var(--border-radius-lg);padding:16px;text-align:center;margin-top:14px;}
-  .dua-box p{font-size:13px;color:var(--a800);font-family:'Noto Nastaliq Urdu',serif;line-height:2;}
+body {
+  font-family: var(--font-body);
+  direction: rtl;
+  background: #f6f9f3;
+  color: #1a2e0f;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ==============================
+   SCROLLBAR
+============================== */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--green-50); }
+::-webkit-scrollbar-thumb { background: var(--green-400); border-radius: 4px; }
+
+/* ==============================
+   NAVIGATION — DESKTOP
+============================== */
+.navbar {
+  position: fixed; top: 0; right: 0; left: 0; z-index: 100;
+  background: rgba(23,52,4,0.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 32px;
+  height: 64px;
+}
+.navbar-brand {
+  font-family: var(--font-display);
+  font-size: 18px; font-weight: 700;
+  color: var(--gold-light);
+  text-decoration: none;
+  display: flex; align-items: center; gap: 10px;
+}
+.navbar-brand .brand-icon {
+  width: 36px; height: 36px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-arabic);
+  font-size: 18px; font-weight: 700;
+  color: var(--green-900);
+}
+.nav-links {
+  display: flex; gap: 4px; list-style: none;
+}
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--green-100);
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+.nav-links a:hover { background: rgba(201,168,76,0.15); color: var(--gold-light); }
+.nav-links a.active { background: var(--green-600); color: white; }
+
+/* Hamburger */
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 8px;
+}
+.hamburger span {
+  display: block; width: 24px; height: 2px;
+  background: var(--gold-light); border-radius: 2px;
+  transition: var(--transition);
+}
+
+/* Mobile menu */
+.mobile-menu {
+  display: none;
+  position: fixed; top: 64px; right: 0; left: 0; z-index: 99;
+  background: var(--green-900);
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+  padding: 12px 0;
+}
+.mobile-menu.open { display: block; }
+.mobile-menu a {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--green-100);
+  text-decoration: none;
+  padding: 12px 24px;
+  border-bottom: 0.5px solid rgba(255,255,255,0.05);
+  transition: var(--transition);
+}
+.mobile-menu a:hover { background: rgba(201,168,76,0.1); color: var(--gold-light); }
+
+/* ==============================
+   HERO
+============================== */
+.hero {
+  padding-top: 64px;
+  min-height: 100vh;
+  background: var(--green-900);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero-pattern {
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(201,168,76,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(96,185,83,0.05) 0%, transparent 40%),
+    repeating-conic-gradient(rgba(201,168,76,0.03) 0deg, transparent 1deg, transparent 89deg, rgba(201,168,76,0.03) 90deg);
+  background-size: cover, cover, 60px 60px;
+}
+.hero-ornament-top {
+  position: absolute; top: 80px; right: 0; left: 0;
+  text-align: center;
+  font-family: var(--font-arabic);
+  font-size: 14px;
+  color: rgba(201,168,76,0.4);
+  letter-spacing: 8px;
+}
+.hero-content {
+  position: relative; z-index: 1;
+  padding: 40px 24px;
+  max-width: 700px;
+  animation: fadeUp 0.8s ease both;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-logo {
+  width: 90px; height: 90px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  border-radius: 50%;
+  margin: 0 auto 24px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-arabic);
+  font-size: 40px; font-weight: 700;
+  color: var(--green-900);
+  box-shadow: 0 0 0 6px rgba(201,168,76,0.2), 0 0 0 12px rgba(201,168,76,0.08);
+}
+.hero-ayat {
+  font-family: var(--font-quran);
+  font-size: clamp(22px, 5vw, 32px);
+  color: var(--gold-light);
+  line-height: 2;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+.hero-tarjuma {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--green-200);
+  margin-bottom: 24px;
+  line-height: 2;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 5vw, 34px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--green-200);
+  margin-bottom: 32px;
+  line-height: 2;
+}
+.hero-badges {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  justify-content: center; margin-bottom: 36px;
+}
+.hero-badge {
+  font-family: var(--font-body);
+  font-size: 11px;
+  padding: 5px 16px;
+  border-radius: 99px;
+  background: rgba(201,168,76,0.12);
+  border: 1px solid rgba(201,168,76,0.3);
+  color: var(--gold-light);
+}
+.hero-stats {
+  display: flex; gap: 32px; justify-content: center;
+  flex-wrap: wrap;
+}
+.hero-stat { text-align: center; }
+.hero-stat-num {
+  font-family: var(--font-arabic);
+  font-size: 28px; font-weight: 700;
+  color: var(--gold);
+  display: block;
+}
+.hero-stat-lbl {
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--green-200);
+}
+.scroll-hint {
+  position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+  text-align: center;
+  animation: bounce 1.8s infinite;
+}
+.scroll-hint span {
+  display: block; font-size: 10px;
+  font-family: var(--font-body);
+  color: var(--green-400);
+  margin-bottom: 6px;
+}
+.scroll-hint svg { width: 20px; fill: var(--green-400); }
+@keyframes bounce {
+  0%,100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(6px); }
+}
+
+/* ==============================
+   SECTION COMMON
+============================== */
+section { padding: 80px 0; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+.section-header { text-align: center; margin-bottom: 52px; }
+.section-tag {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--green-600);
+  background: var(--green-50);
+  border: 1px solid var(--green-100);
+  padding: 4px 16px;
+  border-radius: 99px;
+  margin-bottom: 12px;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 4vw, 32px);
+  font-weight: 700;
+  color: var(--green-900);
+  line-height: 1.5;
+}
+.section-divider {
+  width: 60px; height: 3px;
+  background: linear-gradient(90deg, var(--green-600), var(--gold));
+  border-radius: 3px;
+  margin: 14px auto 0;
+}
+.section-desc {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: #4a6633;
+  margin-top: 14px;
+  line-height: 2.1;
+  max-width: 560px;
+  margin-right: auto; margin-left: auto;
+}
+
+/* ==============================
+   TAARUF — ABOUT
+============================== */
+#taaruf { background: #fff; }
+.taaruf-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.taaruf-img-wrap {
+  position: relative;
+}
+.taaruf-img {
+  width: 100%; border-radius: var(--radius-xl);
+  object-fit: cover; height: 380px;
+  box-shadow: var(--shadow-hero);
+  display: block;
+}
+.taaruf-img-badge {
+  position: absolute; bottom: -16px; right: -16px;
+  background: var(--green-800);
+  border-radius: var(--radius-md);
+  padding: 14px 20px;
+  box-shadow: var(--shadow-card);
+  text-align: center;
+}
+.taaruf-img-badge .num {
+  font-family: var(--font-arabic);
+  font-size: 28px; font-weight: 700;
+  color: var(--gold);
+  display: block;
+}
+.taaruf-img-badge .lbl {
+  font-family: var(--font-body);
+  font-size: 10px;
+  color: var(--green-200);
+}
+.taaruf-text h3 {
+  font-family: var(--font-display);
+  font-size: 20px; font-weight: 700;
+  color: var(--green-900);
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+.taaruf-text p {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: #3a5028;
+  line-height: 2.2;
+  margin-bottom: 16px;
+}
+.taaruf-points { list-style: none; margin-top: 20px; }
+.taaruf-points li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: #3a5028;
+  line-height: 2;
+  margin-bottom: 8px;
+}
+.taaruf-points li::before {
+  content: '✦';
+  color: var(--gold);
+  font-size: 10px;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+/* ==============================
+   MAQASID
+============================== */
+#maqasid { background: var(--green-50); }
+.maqasid-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+.maqsad-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  border: 1px solid var(--green-100);
+  box-shadow: var(--shadow-card);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.maqsad-card::before {
+  content: '';
+  position: absolute; top: 0; right: 0;
+  width: 4px; height: 100%;
+  background: linear-gradient(to bottom, var(--green-600), var(--gold));
+}
+.maqsad-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(39,80,10,0.13);
+}
+.maqsad-num {
+  width: 36px; height: 36px;
+  background: var(--green-800);
+  color: var(--green-50);
+  font-family: var(--font-arabic);
+  font-size: 16px; font-weight: 700;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 14px;
+}
+.maqsad-card h3 {
+  font-family: var(--font-display);
+  font-size: 16px; font-weight: 600;
+  color: var(--green-900);
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+.maqsad-card p {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: #4a6633;
+  line-height: 2.1;
+  margin-bottom: 12px;
+}
+.sub-points { list-style: none; }
+.sub-points li {
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: #3a5028;
+  line-height: 2;
+  padding: 6px 10px;
+  background: var(--green-50);
+  border-radius: var(--radius-sm);
+  margin-bottom: 6px;
+  border-right: 2px solid var(--green-200);
+}
+.sub-lbl {
+  font-family: var(--font-arabic);
+  font-weight: 700;
+  color: var(--green-600);
+  margin-left: 4px;
+}
+
+/* ==============================
+   NISAB — COURSES
+============================== */
+#nisab { background: #fff; }
+.nisab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+.nisab-card {
+  background: var(--green-50);
+  border: 1px solid var(--green-100);
+  border-radius: var(--radius-lg);
+  padding: 28px 20px;
+  text-align: center;
+  transition: var(--transition);
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+.nisab-card::after {
+  content: '';
+  position: absolute; bottom: 0; right: 0; left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--green-600), var(--gold));
+  transform: scaleX(0);
+  transition: var(--transition);
+}
+.nisab-card:hover { transform: translateY(-5px); background: var(--teal-50); }
+.nisab-card:hover::after { transform: scaleX(1); }
+.nisab-icon {
+  font-size: 32px; margin-bottom: 14px;
+  display: block;
+}
+.nisab-card h3 {
+  font-family: var(--font-display);
+  font-size: 15px; font-weight: 600;
+  color: var(--green-900);
+  margin-bottom: 8px;
+  line-height: 1.7;
+}
+.nisab-card p {
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: #4a6633;
+  line-height: 2;
+}
+.nisab-badge {
+  display: inline-block;
+  margin-top: 10px;
+  font-family: var(--font-body);
+  font-size: 10px;
+  padding: 3px 12px;
+  border-radius: 99px;
+  background: var(--green-800);
+  color: var(--green-50);
+}
+
+/* ==============================
+   TARIKH — TIMELINE
+============================== */
+#tarikh { background: var(--green-900); position: relative; overflow: hidden; }
+#tarikh::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at top right, rgba(201,168,76,0.06), transparent 60%);
+}
+#tarikh .section-title { color: #fff; }
+#tarikh .section-tag { background: rgba(201,168,76,0.12); border-color: rgba(201,168,76,0.3); color: var(--gold-light); }
+#tarikh .section-divider { background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+#tarikh .section-desc { color: var(--green-200); }
+
+.timeline {
+  position: relative; max-width: 700px; margin: 0 auto;
+  padding: 0 24px;
+}
+.timeline::before {
+  content: '';
+  position: absolute; top: 0; bottom: 0;
+  right: 50%; transform: translateX(50%);
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--gold) 10%, var(--gold) 90%, transparent);
+  opacity: 0.3;
+}
+.tl-item {
+  display: flex; gap: 24px; margin-bottom: 40px;
+  align-items: flex-start;
+  animation: fadeUp 0.6s ease both;
+}
+.tl-dot {
+  width: 44px; height: 44px; flex-shrink: 0;
+  background: var(--green-800);
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-arabic);
+  font-size: 13px; font-weight: 700;
+  color: var(--gold);
+  position: relative; z-index: 1;
+}
+.tl-body {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  flex: 1;
+}
+.tl-body h4 {
+  font-family: var(--font-display);
+  font-size: 15px; font-weight: 600;
+  color: var(--gold-light);
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+.tl-body p {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--green-200);
+  line-height: 2;
+}
+
+/* ==============================
+   BANIYAN — FOUNDERS
+============================== */
+#baniyan { background: #fff; }
+.founders-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px; max-width: 720px; margin: 0 auto;
+}
+.founder-card {
+  background: linear-gradient(135deg, var(--green-50), #fff);
+  border: 1px solid var(--green-100);
+  border-radius: var(--radius-xl);
+  padding: 32px 28px;
+  text-align: center;
+  box-shadow: var(--shadow-card);
+  transition: var(--transition);
+}
+.founder-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hero);
+}
+.founder-avatar {
+  width: 80px; height: 80px;
+  background: var(--green-900);
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-arabic);
+  font-size: 32px; font-weight: 700;
+  color: var(--gold);
+  border: 3px solid var(--gold);
+  box-shadow: 0 0 0 6px rgba(201,168,76,0.1);
+}
+.founder-card h3 {
+  font-family: var(--font-display);
+  font-size: 17px; font-weight: 700;
+  color: var(--green-900);
+  margin-bottom: 10px;
+  line-height: 1.7;
+}
+.founder-card p {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: #4a6633;
+  line-height: 2;
+  margin-bottom: 4px;
+}
+.founder-role {
+  display: inline-block;
+  margin-top: 12px;
+  font-family: var(--font-body);
+  font-size: 10px;
+  padding: 4px 16px;
+  border-radius: 99px;
+  background: var(--green-800);
+  color: var(--green-50);
+}
+
+/* ==============================
+   DUA SECTION
+============================== */
+#dua {
+  background: linear-gradient(135deg, var(--green-800), var(--green-900));
+  text-align: center;
+  padding: 80px 24px;
+  position: relative; overflow: hidden;
+}
+#dua::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(201,168,76,0.08), transparent 70%);
+}
+.dua-arabic {
+  font-family: var(--font-quran);
+  font-size: clamp(20px,4vw,28px);
+  color: var(--gold-light);
+  line-height: 2.2;
+  margin-bottom: 14px;
+  position: relative;
+}
+.dua-urdu {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--green-200);
+  line-height: 2;
+  max-width: 500px;
+  margin: 0 auto 14px;
+  position: relative;
+}
+.dua-ameen {
+  font-family: var(--font-arabic);
+  font-size: 22px;
+  color: var(--gold);
+  position: relative;
+}
+
+/* ==============================
+   RAABITA — CONTACT
+============================== */
+#raabita { background: var(--green-50); }
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+.contact-card {
+  background: #fff;
+  border: 1px solid var(--green-100);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  display: flex; gap: 16px; align-items: flex-start;
+  box-shadow: var(--shadow-card);
+  transition: var(--transition);
+}
+.contact-card:hover { transform: translateY(-3px); }
+.contact-icon {
+  width: 46px; height: 46px; flex-shrink: 0;
+  background: var(--green-50);
+  border: 1px solid var(--green-100);
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+}
+.contact-info h4 {
+  font-family: var(--font-display);
+  font-size: 14px; font-weight: 600;
+  color: var(--green-900);
+  margin-bottom: 4px;
+}
+.contact-info p {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: #4a6633;
+  line-height: 1.9;
+}
+
+/* ==============================
+   FOOTER
+============================== */
+footer {
+  background: var(--green-900);
+  padding: 40px 24px 24px;
+  text-align: center;
+  border-top: 1px solid rgba(201,168,76,0.2);
+}
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 20px; font-weight: 700;
+  color: var(--gold-light);
+  margin-bottom: 8px;
+}
+.footer-sub {
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--green-400);
+  margin-bottom: 24px;
+}
+.footer-ornament {
+  font-family: var(--font-arabic);
+  font-size: 13px;
+  color: rgba(201,168,76,0.4);
+  letter-spacing: 6px;
+  margin-bottom: 20px;
+}
+.footer-copy {
+  font-family: var(--font-body);
+  font-size: 10px;
+  color: var(--green-600);
+  border-top: 0.5px solid rgba(255,255,255,0.06);
+  padding-top: 16px;
+}
+
+/* ==============================
+   MOBILE NAV — BOTTOM BAR
+============================== */
+.mobile-bottombar {
+  display: none;
+  position: fixed; bottom: 0; right: 0; left: 0; z-index: 100;
+  background: var(--green-900);
+  border-top: 1px solid rgba(201,168,76,0.2);
+  padding: 8px 0 env(safe-area-inset-bottom, 8px);
+  flex-direction: row;
+}
+.mobile-bottombar a {
+  flex: 1;
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  text-decoration: none;
+  color: var(--green-400);
+  font-family: var(--font-body);
+  font-size: 9px;
+  padding: 4px 0;
+  transition: var(--transition);
+}
+.mobile-bottombar a.active { color: var(--gold); }
+.mobile-bottombar .bar-icon { font-size: 20px; line-height: 1; }
+
+/* ==============================
+   RESPONSIVE
+============================== */
+@media (max-width: 900px) {
+  .taaruf-grid { grid-template-columns: 1fr; gap: 32px; }
+  .taaruf-img-wrap { order: -1; }
+  .taaruf-img { height: 220px; }
+  .taaruf-img-badge { right: 12px; bottom: -12px; }
+}
+
+@media (max-width: 768px) {
+  section { padding: 60px 0; }
+  .navbar { display: none; }
+  .mobile-bottombar { display: flex; }
+
+  body { padding-bottom: 72px; }
+
+  .hero { min-height: 100svh; }
+  .hero-logo { width: 70px; height: 70px; font-size: 30px; }
+  .hero-stats { gap: 20px; }
+  .hero-stat-num { font-size: 22px; }
+
+  .taaruf-grid { grid-template-columns: 1fr; }
+  .timeline::before { display: none; }
+  .tl-item { flex-direction: row; }
+
+  .nisab-grid { grid-template-columns: repeat(2, 1fr); }
+  .founders-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .maqasid-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .hero-content { padding: 32px 16px; }
+  .hero-badges { gap: 6px; }
+  .container { padding: 0 16px; }
+  .nisab-grid { grid-template-columns: 1fr; }
+  .hero-stat-num { font-size: 20px; }
+}
+
+/* ==============================
+   ANIMATIONS ON SCROLL
+============================== */
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ==============================
+   BACK TO TOP
+============================== */
+.back-top {
+  position: fixed; bottom: 84px; left: 20px; z-index: 90;
+  width: 40px; height: 40px;
+  background: var(--green-800);
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold);
+  font-size: 18px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(23,52,4,0.3);
+  opacity: 0; pointer-events: none;
+  transition: var(--transition);
+}
+.back-top.show { opacity: 1; pointer-events: auto; }
+@media (min-width: 769px) {
+  .back-top { bottom: 28px; }
+}
 </style>
+</head>
 
-<div class="app">
-  <div class="header">
-    <div class="header-logo">ق</div>
-    <h1>جامعہ دارالقرآن للبنین والبنات</h1>
-    <p>نصیرآباد بھیرہ، ضلع سرگودھا</p>
-  </div>
+<body>
 
-  <nav class="nav">
-    <button class="nav-btn active" onclick="showPage('home',this)">
-      <span class="nav-icon">🏠</span><span>تعارف</span>
-    </button>
-    <button class="nav-btn" onclick="showPage('maqasid',this)">
-      <span class="nav-icon">🎯</span><span>مقاصد</span>
-    </button>
-    <button class="nav-btn" onclick="showPage('courses',this)">
-      <span class="nav-icon">📚</span><span>نصاب</span>
-    </button>
-    <button class="nav-btn" onclick="showPage('history',this)">
-      <span class="nav-icon">📅</span><span>تاریخ</span>
-    </button>
-    <button class="nav-btn" onclick="showPage('contact',this)">
-      <span class="nav-icon">📞</span><span>رابطہ</span>
-    </button>
-  </nav>
+<!-- ===== NAVBAR (DESKTOP) ===== -->
+<nav class="navbar">
+  <a class="navbar-brand" href="#home">
+    <div class="brand-icon">ق</div>
+    جامعہ دارالقرآن
+  </a>
+  <ul class="nav-links">
+    <li><a href="#taaruf" class="active">تعارف</a></li>
+    <li><a href="#maqasid">مقاصد</a></li>
+    <li><a href="#nisab">نصاب</a></li>
+    <li><a href="#tarikh">تاریخ</a></li>
+    <li><a href="#baniyan">بانیان</a></li>
+    <li><a href="#raabita">رابطہ</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="مینو">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
 
-  <div class="content">
-
-    <!-- صفحہ 1: تعارف -->
-    <div class="page active" id="page-home">
-      <img class="img-banner" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Badshahi_Mosque_July_1_2005_pic32_by_Ali_Imran.jpg/1280px-Badshahi_Mosque_July_1_2005_pic32_by_Ali_Imran.jpg" alt="مسجد" onerror="this.style.display='none'">
-      <div class="hero-card">
-        <div class="arabic">اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ</div>
-        <p>پڑھو اپنے رب کے نام سے جس نے پیدا کیا</p>
-      </div>
-      <div class="stat-row">
-        <div class="stat-box"><div class="num">١٩٩٨</div><div class="lbl">بنیاد (لڑکے)</div></div>
-        <div class="stat-box"><div class="num">٢٠٠٩</div><div class="lbl">بنیاد (لڑکیاں)</div></div>
-      </div>
-      <div class="info-card">
-        <h3>مدارس دینیہ کا مقام</h3>
-        <p>مدارس دینیہ رحمت خداوندی کے خزانے، علوم نبوت کے سرچشمے، امن کے مراکز اور روحانی امراض کی علاج گاہیں ہیں جن سے ہر دور میں لاکھوں لا دوا مریض شفا یاب ہوتے ہیں۔</p>
-      </div>
-      <div class="info-card">
-        <h3>جامعہ کی خصوصیت</h3>
-        <p>جامعہ علاقہ بھر میں ایک خاص شناخت اور منفرد پہچان رکھتا ہے۔ مسلمان بچیاں اعلیٰ دینی تعلیم کے لیے جامعۃ دارالقرآن کا رخ کرتی ہیں اور قرآن و حدیث کے علم کے حصول کے بعد دین کی آبیاری کا کام کرتی ہیں۔</p>
-      </div>
-      <div class="dua-box"><p>پروردگار ادارے کو دن دگنی رات چگنی ترقی عطا فرمائے — آمین</p></div>
-    </div>
-
-    <!-- صفحہ 2: اغراض و مقاصد (نیا) -->
-    <div class="page" id="page-maqasid">
-      <div class="img-grid">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Quran_opened.jpg/640px-Quran_opened.jpg" alt="قرآن" onerror="this.style.display='none'">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/IslamicCalligraphy.jpg/640px-IslamicCalligraphy.jpg" alt="خطاطی" onerror="this.style.display='none'">
-      </div>
-
-      <div class="section-label">اغراض و مقاصد</div>
-
-      <div class="maqsad-item">
-        <div class="maqsad-num">۱</div>
-        <h4>دینی و اخلاقی تربیت</h4>
-        <p>قرآن وسنت کی روشنی میں طالبات کی دینی واخلاقی تربیت کا خاص اہتمام کرنا</p>
-      </div>
-
-      <div class="maqsad-item">
-        <div class="maqsad-num">۲</div>
-        <h4>عقائد اسلامیہ کا استحکام</h4>
-        <p>طالبات کے ذہن ودماغ میں اسلامی عقائد کی جڑوں کو مستحکم کرنا</p>
-      </div>
-
-      <div class="maqsad-item">
-        <div class="maqsad-num">۳</div>
-        <h4>باصلاحیت عالمائیں تیار کرنا</h4>
-        <p>ایسی عالمائیں تیار کرنا جو مندرجہ ذیل صفات کی حامل ہوں:</p>
-        <div class="sub-item">
-          <p><span class="sub-label">الف:</span> اپنے علاقے، ماحول اور زمانے میں اسلامی تعلیمات و اخلاق کا اعلیٰ اور مثالی نمونہ ہوں</p>
-        </div>
-        <div class="sub-item">
-          <p><span class="sub-label">ب:</span> حق کی گواہی دینے والی اور اللہ کے کلمے کو بلند کرنے والی ہوں، بدعات وخرافات کے خاتمے کا جذبہ رکھتی ہوں</p>
-        </div>
-        <div class="sub-item">
-          <p><span class="sub-label">ج:</span> نئی نسل کے لیے مثالی مربی بنیں اور بچوں کی تعلیم وتربیت میں مثالی کردار ادا کریں</p>
-        </div>
-        <div class="sub-item">
-          <p><span class="sub-label">د:</span> علوم دینیہ کی ماہر ہونے کے ساتھ جدید نظریات سے واقف ہوں اور اسلام کے خلاف اعتراضات کا جواب دینے کی اہلیت رکھتی ہوں</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- صفحہ 3: نصاب -->
-    <div class="page" id="page-courses">
-      <div class="section-label">تعلیمی پروگرام</div>
-      <div class="course-item">
-        <div class="course-icon">📖</div>
-        <div class="course-text"><h4>ناظرہ قرآن کریم</h4><p>صحیح تلاوت کی تعلیم</p><span class="badge">ابتدائی</span></div>
-      </div>
-      <div class="course-item">
-        <div class="course-icon">🎯</div>
-        <div class="course-text"><h4>حفظ القرآن الکریم</h4><p>قرآن مجید کو حفظ کرنا</p><span class="badge">لڑکے و لڑکیاں</span></div>
-      </div>
-      <div class="course-item">
-        <div class="course-icon">✨</div>
-        <div class="course-text"><h4>تجوید و قراءت</h4><p>قواعد تجوید کی مکمل تعلیم</p><span class="badge">درمیانی</span></div>
-      </div>
-      <div class="course-item">
-        <div class="course-icon">📝</div>
-        <div class="course-text"><h4>ترجمہ و تفسیر القرآن</h4><p>قرآن کریم کا مفہوم اور تفسیر</p><span class="badge">اعلیٰ</span></div>
-      </div>
-      <div class="course-item">
-        <div class="course-icon">🌟</div>
-        <div class="course-text"><h4>دراسات دینیہ</h4><p>دو سالہ مختصر عالمہ کورس</p><span class="badge">للبنات</span></div>
-      </div>
-    </div>
-
-    <!-- صفحہ 4: تاریخ -->
-    <div class="page" id="page-history">
-      <div class="section-label">ادارے کا سفر</div>
-      <div class="timeline-item">
-        <div class="timeline-dot">98</div>
-        <div class="timeline-body">
-          <h4>مدرسہ الجامعۃ الاسلامیہ کا قیام</h4>
-          <p>حضرت مولانا قاری محمد اشرف صاحب نے درجہ حفظ و ناظرہ سے تعلیم کا آغاز کیا</p>
-        </div>
-      </div>
-      <div class="timeline-line"></div>
-      <div class="timeline-item">
-        <div class="timeline-dot">09</div>
-        <div class="timeline-body">
-          <h4>جامعہ دارالقرآن للبنات کا قیام</h4>
-          <p>لڑکیوں کے لیے علیحدہ مدرسے کی بنیاد رکھی گئی</p>
-        </div>
-      </div>
-      <div class="timeline-line"></div>
-      <div class="timeline-item">
-        <div class="timeline-dot">16</div>
-        <div class="timeline-body">
-          <h4>نئی قیادت کا آغاز</h4>
-          <p>قاری محمد سہیل اشرف نے ادارتی ذمہ داریاں سنبھالیں اور نئے شعبے شروع کیے</p>
-        </div>
-      </div>
-      <div class="timeline-line"></div>
-      <div class="timeline-item">
-        <div class="timeline-dot">🌿</div>
-        <div class="timeline-body">
-          <h4>آج</h4>
-          <p>جامعہ علاقہ بھر میں مشہور و مقبول دینی ادارہ بن چکا ہے</p>
-        </div>
-      </div>
-      <div class="info-card">
-        <h3>ماں کی گود</h3>
-        <p>کہا جاتا ہے کہ ماں کی گود بچے کا پہلا مدرسہ ہے۔ عورت ایک صالح معاشرے کی تشکیل میں نہایت اہم رول ادا کرتی ہے۔ اسی سوچ نے لڑکیوں کے ادارے کی بنیاد ڈالی۔</p>
-      </div>
-    </div>
-
-    <!-- صفحہ 5: رابطہ -->
-    <div class="page" id="page-contact">
-      <div class="section-label">رابطہ کریں</div>
-      <div class="contact-item">
-        <div class="contact-icon">📍</div>
-        <div class="contact-text"><h4>پتہ</h4><p>نصیرآباد، بھیرہ، ضلع سرگودھا، پاکستان</p></div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">🕌</div>
-        <div class="contact-text"><h4>ادارہ</h4><p>جامعہ دارالقرآن للبنین والبنات</p></div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">🎓</div>
-        <div class="contact-text"><h4>الحاق</h4><p>وفاق المدارس العربیہ پاکستان</p></div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">⏰</div>
-        <div class="contact-text"><h4>تعلیمی وقت</h4><p>صبح — دوپہر (پیر تا جمعہ)</p></div>
-      </div>
-      <div class="info-card">
-        <h3>داخلہ</h3>
-        <p>لڑکے اور لڑکیاں دونوں کے لیے دینی تعلیم کا بہترین بندوبست ہے۔ داخلہ کے لیے براہ راست جامعہ سے رابطہ کریں۔</p>
-      </div>
-
-      <div class="founder-card">
-        <div class="founder-avatar">ا</div>
-        <div class="founder-info">
-          <h4>حضرت مولانا قاری محمد اشرف صاحب</h4>
-          <p>فاضل جامعہ اشرفیہ لاہور — بانی ١٩٩٨ء</p>
-        </div>
-      </div>
-      <div class="founder-card">
-        <div class="founder-avatar">س</div>
-        <div class="founder-info">
-          <h4>قاری محمد سہیل اشرف</h4>
-          <p>ایم فل علوم اسلامیہ — ذمہ دار للبنات</p>
-        </div>
-      </div>
-
-      <div class="dua-box"><p>علم حاصل کرنا ہر مسلمان مرد اور عورت پر فرض ہے</p></div>
-    </div>
-
-  </div>
+<!-- Mobile Dropdown Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#taaruf" onclick="closeMenu()">🏠 تعارف</a>
+  <a href="#maqasid" onclick="closeMenu()">🎯 اغراض و مقاصد</a>
+  <a href="#nisab" onclick="closeMenu()">📚 تعلیمی نصاب</a>
+  <a href="#tarikh" onclick="closeMenu()">📅 تاریخ</a>
+  <a href="#baniyan" onclick="closeMenu()">👤 بانیان</a>
+  <a href="#raabita" onclick="closeMenu()">📞 رابطہ</a>
 </div>
 
+<!-- ===== HERO ===== -->
+<section id="home" class="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-ornament-top">✦ ✦ ✦ ✦ ✦</div>
+  <div class="hero-content">
+    <div class="hero-logo">ق</div>
+    <div class="hero-ayat">اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ</div>
+    <div class="hero-tarjuma">پڑھو اپنے رب کے نام سے جس نے پیدا کیا</div>
+    <h1 class="hero-title">جامعہ دارالقرآن<br>للبنین والبنات</h1>
+    <p class="hero-subtitle">نصیرآباد بھیرہ، ضلع سرگودھا، پاکستان</p>
+    <div class="hero-badges">
+      <span class="hero-badge">علم</span>
+      <span class="hero-badge">تربیت</span>
+      <span class="hero-badge">خدمت</span>
+      <span class="hero-badge">قرآن و سنت</span>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-num">١٩٩٨</span>
+        <span class="hero-stat-lbl">سنہ تاسیس للبنین</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">٢٠٠٩</span>
+        <span class="hero-stat-lbl">سنہ تاسیس للبنات</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">٢٥+</span>
+        <span class="hero-stat-lbl">سال خدمت</span>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>نیچے دیکھیں</span>
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 16l-6-6h12z"/></svg>
+  </div>
+</section>
+
+<!-- ===== TAARUF ===== -->
+<section id="taaruf">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">تعارف</span>
+      <h2 class="section-title">ادارے کا تعارف</h2>
+      <div class="section-divider"></div>
+      <p class="section-desc">مدارس دینیہ رحمت خداوندی کے خزانے، علوم نبوت کے سرچشمے اور امن کے مراکز ہیں</p>
+    </div>
+    <div class="taaruf-grid">
+      <div class="taaruf-img-wrap reveal">
+        <img class="taaruf-img"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Badshahi_Mosque_July_1_2005_pic32_by_Ali_Imran.jpg/1280px-Badshahi_Mosque_July_1_2005_pic32_by_Ali_Imran.jpg"
+          alt="مسجد"
+          onerror="this.src='https://images.unsplash.com/photo-1564769610726-59cead6a6f8f?w=600&q=80'">
+        <div class="taaruf-img-badge">
+          <span class="num">٢٥+</span>
+          <span class="lbl">سال خدمت</span>
+        </div>
+      </div>
+      <div class="taaruf-text reveal">
+        <h3>بھیرہ شہر کا معروف دینی ادارہ</h3>
+        <p>
+          مدارس دینیہ رحمت خداوندی کے خزانے، علوم نبوت کے سرچشمے، امن کے مراکز اور روحانی امراض کی علاج گاہیں ہیں جن سے ہر دور میں لاکھوں لا دوا مریض شفا یاب ہوتے ہیں اور تشنگان علم جن سے فیض پاکر دنیا کے طول و عرض میں دین کی آبیاری کا کام کرتے ہیں۔
+        </p>
+        <p>
+          سب سے پہلی وحی جس کے ساتھ اللہ نے اپنے رسول ﷺ کو خطاب فرمایا وہ پیغام تھا "پڑھو" اور اس حکم کے ساتھ علم کا حصول تمام مردوں اور عورتوں کے لیے یکساں طور پر ایک اہم دینی فریضہ قرار پایا۔
+        </p>
+        <ul class="taaruf-points">
+          <li>قرآن وسنت کی روشنی میں اسلامی تعلیم</li>
+          <li>لڑکے اور لڑکیوں دونوں کے لیے علیحدہ شعبے</li>
+          <li>علاقہ بھر میں منفرد پہچان اور شناخت</li>
+          <li>فارغ طالبات اپنے اپنے علاقوں میں دین کی خدمت کر رہی ہیں</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MAQASID ===== -->
+<section id="maqasid">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">اغراض و مقاصد</span>
+      <h2 class="section-title">جامعہ کے اغراض و مقاصد</h2>
+      <div class="section-divider"></div>
+      <p class="section-desc">جامعہ کا بنیادی مقصد قرآن و سنت کی روشنی میں ایسی نسل تیار کرنا ہے جو دین و دنیا میں سرخرو ہو</p>
+    </div>
+    <div class="maqasid-grid">
+      <div class="maqsad-card reveal">
+        <div class="maqsad-num">۱</div>
+        <h3>دینی و اخلاقی تربیت</h3>
+        <p>قرآن وسنت کی روشنی میں طالبات کی دینی واخلاقی تربیت کا خاص اہتمام کرنا تاکہ وہ ایک صالح معاشرے کی بنیاد بنیں۔</p>
+      </div>
+      <div class="maqsad-card reveal">
+        <div class="maqsad-num">۲</div>
+        <h3>عقائد اسلامیہ کا استحکام</h3>
+        <p>طالبات کے ذہن ودماغ میں اسلامی عقائد کی جڑوں کو مستحکم کرنا تاکہ وہ ہر طرح کے فتنوں کا مقابلہ کرنے کے قابل ہوں۔</p>
+      </div>
+      <div class="maqsad-card reveal">
+        <div class="maqsad-num">۳</div>
+        <h3>مثالی عالمائیں تیار کرنا</h3>
+        <p>ایسی عالمائیں تیار کرنا جو مندرجہ ذیل صفات کی حامل ہوں:</p>
+        <ul class="sub-points">
+          <li><span class="sub-lbl">الف:</span> اپنے علاقے اور زمانے میں اسلامی تعلیمات کا مثالی نمونہ ہوں</li>
+          <li><span class="sub-lbl">ب:</span> حق کی گواہی دینے والی اور بدعات و خرافات کے خاتمے کا جذبہ رکھتی ہوں</li>
+          <li><span class="sub-lbl">ج:</span> نئی نسل کے لیے مثالی مربی بنیں اور اخلاق فاضلہ سے متصف کریں</li>
+          <li><span class="sub-lbl">د:</span> جدید نظریات سے واقف ہوں اور اسلام کے خلاف اعتراضات کا جواب دینے کی اہلیت رکھتی ہوں</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NISAB ===== -->
+<section id="nisab">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">تعلیمی نصاب</span>
+      <h2 class="section-title">شعبہ جات و نصاب</h2>
+      <div class="section-divider"></div>
+      <p class="section-desc">ابتدائی سے اعلیٰ تک مکمل دینی تعلیم کا بندوبست</p>
+    </div>
+    <div class="nisab-grid">
+      <div class="nisab-card reveal">
+        <span class="nisab-icon">📖</span>
+        <h3>ناظرہ قرآن کریم</h3>
+        <p>صحیح تلاوت اور روانی کی مکمل تعلیم</p>
+        <span class="nisab-badge">ابتدائی</span>
+      </div>
+      <div class="nisab-card reveal">
+        <span class="nisab-icon">🎯</span>
+        <h3>حفظ القرآن الکریم</h3>
+        <p>قرآن مجید کو حفظ کرنا بہترین اساتذہ کی نگرانی میں</p>
+        <span class="nisab-badge">للبنین والبنات</span>
+      </div>
+      <div class="nisab-card reveal">
+        <span class="nisab-icon">✨</span>
+        <h3>تجوید و قراءت</h3>
+        <p>قواعد تجوید کی مکمل تعلیم — مخارج اور صفات</p>
+        <span class="nisab-badge">درمیانی</span>
+      </div>
+      <div class="nisab-card reveal">
+        <span class="nisab-icon">📝</span>
+        <h3>ترجمہ و تفسیر القرآن</h3>
+        <p>قرآن کریم کا اردو ترجمہ اور مکمل تفسیر</p>
+        <span class="nisab-badge">اعلیٰ</span>
+      </div>
+      <div class="nisab-card reveal">
+        <span class="nisab-icon">🌟</span>
+        <h3>دراسات دینیہ — عالمہ</h3>
+        <p>دو سالہ مختصر عالمہ کورس — فقہ، حدیث، عقیدہ، تفسیر</p>
+        <span class="nisab-badge">للبنات</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TARIKH ===== -->
+<section id="tarikh">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">تاریخ</span>
+      <h2 class="section-title">ادارے کا سفر</h2>
+      <div class="section-divider"></div>
+      <p class="section-desc">١٩٩٨ء سے آج تک ترقی اور خدمت کا سلسلہ جاری ہے</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-dot">98</div>
+        <div class="tl-body">
+          <h4>مدرسہ الجامعۃ الاسلامیہ کا قیام — ١٩٩٨ء</h4>
+          <p>حضرت مولانا قاری محمد اشرف صاحب (فاضل جامعہ اشرفیہ لاہور) نے ضلع سرگودھا کی تحصیل بھیرہ میں اس عظیم دینی ادارے کی بنیاد رکھی۔ درجہ حفظ و ناظرہ سے باقاعدہ تعلیم کا آغاز ہوا۔</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot">09</div>
+        <div class="tl-body">
+          <h4>جامعہ دارالقرآن للبنات کا قیام — ٢٠٠٩ء</h4>
+          <p>لڑکیوں کی دینی تعلیم کی اشد ضرورت کے پیش نظر علیحدہ مدرسے کی بنیاد رکھی گئی۔ محترم قاری محمد سہیل اشرف اس کے ذمہ دار قرار پائے۔</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot">16</div>
+        <div class="tl-body">
+          <h4>نئی قیادت — نئے شعبے — ٢٠١٦ء</h4>
+          <p>فراغت تعلیم کے بعد قاری محمد سہیل اشرف نے جامعہ کی ادارتی ذمہ داریاں سنبھالیں۔ ناظرہ، تجوید، ترجمۃ و تفسیر القرآن اور دو سالہ عالمہ کورس کا سلسلہ شروع کیا۔</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot">🌿</div>
+        <div class="tl-body">
+          <h4>آج — روشن مستقبل</h4>
+          <p>آج جامعہ علاقہ بھر میں ایک خاص شناخت اور منفرد پہچان رکھتا ہے۔ فارغ طالبات اپنے اپنے علاقوں، بستیوں اور محلوں میں مسلمان بچیوں اور عورتوں میں تعلیم وتربیت اور اصلاح و تبلیغ کا کام انجام دیتی ہیں۔</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BANIYAN ===== -->
+<section id="baniyan">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">بانیان</span>
+      <h2 class="section-title">بانیان و ذمہ داران</h2>
+      <div class="section-divider"></div>
+      <p class="section-desc">جن کی خلوص نیت اور انتھک محنت نے جامعہ کو آج اس مقام تک پہنچایا</p>
+    </div>
+    <div class="founders-grid">
+      <div class="founder-card reveal">
+        <div class="founder-avatar">ا</div>
+        <h3>حضرت مولانا قاری محمد اشرف صاحب</h3>
+        <p>فاضل جامعہ اشرفیہ لاہور پاکستان</p>
+        <p>بانی مدرسہ الجامعۃ الاسلامیہ</p>
+        <span class="founder-role">بانی — ١٩٩٨ء</span>
+      </div>
+      <div class="founder-card reveal">
+        <div class="founder-avatar">س</div>
+        <h3>محترم قاری محمد سہیل اشرف</h3>
+        <p>فاضل وفاق المدارس العربیہ پاکستان</p>
+        <p>ایم فل علوم اسلامیہ</p>
+        <span class="founder-role">ذمہ دار — للبنات</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DUA ===== -->
+<section id="dua">
+  <div class="container">
+    <div class="dua-arabic reveal">اللَّهُمَّ زِدْنَا عِلْمًا وَنَفَّعْنَا بِمَا عَلَّمْتَنَا</div>
+    <div class="dua-urdu reveal">پروردگار ادارے کو دن دگنی رات چگنی ترقی عطا فرمائے اور اس سے فیض پانے والوں کو دنیا و آخرت میں کامیاب فرمائے</div>
+    <div class="dua-ameen reveal">آمین یا رب العالمین</div>
+  </div>
+</section>
+
+<!-- ===== RAABITA ===== -->
+<section id="raabita">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">رابطہ</span>
+      <h2 class="section-title">رابطہ کریں</h2>
+      <div class="section-divider"></div>
+      <p class="section-desc">داخلہ اور دیگر معلومات کے لیے براہ راست جامعہ سے رابطہ کریں</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card reveal">
+        <div class="contact-icon">📍</div>
+        <div class="contact-info">
+          <h4>پتہ</h4>
+          <p>نصیرآباد، بھیرہ<br>ضلع سرگودھا، پاکستان</p>
+        </div>
+      </div>
+      <div class="contact-card reveal">
+        <div class="contact-icon">🕌</div>
+        <div class="contact-info">
+          <h4>ادارہ</h4>
+          <p>جامعہ دارالقرآن<br>للبنین والبنات</p>
+        </div>
+      </div>
+      <div class="contact-card reveal">
+        <div class="contact-icon">🎓</div>
+        <div class="contact-info">
+          <h4>الحاق</h4>
+          <p>وفاق المدارس العربیہ<br>پاکستان</p>
+        </div>
+      </div>
+      <div class="contact-card reveal">
+        <div class="contact-icon">⏰</div>
+        <div class="contact-info">
+          <h4>اوقات تعلیم</h4>
+          <p>صبح تا دوپہر<br>پیر تا جمعہ</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-ornament">✦ ✦ ✦ ✦ ✦</div>
+  <div class="footer-logo">جامعہ دارالقرآن للبنین والبنات</div>
+  <div class="footer-sub">نصیرآباد بھیرہ، ضلع سرگودھا، پاکستان</div>
+  <div class="footer-copy">جملہ حقوق محفوظ © جامعہ دارالقرآن</div>
+</footer>
+
+<!-- Back to Top -->
+<a href="#home" class="back-top" id="backTop">↑</a>
+
+<!-- ===== MOBILE BOTTOM NAV ===== -->
+<nav class="mobile-bottombar">
+  <a href="#home" class="active"><span class="bar-icon">🏠</span>تعارف</a>
+  <a href="#maqasid"><span class="bar-icon">🎯</span>مقاصد</a>
+  <a href="#nisab"><span class="bar-icon">📚</span>نصاب</a>
+  <a href="#tarikh"><span class="bar-icon">📅</span>تاریخ</a>
+  <a href="#baniyan"><span class="bar-icon">👤</span>بانیان</a>
+  <a href="#raabita"><span class="bar-icon">📞</span>رابطہ</a>
+</nav>
+
 <script>
-function showPage(name,btn){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById('page-'+name).classList.add('active');
-  btn.classList.add('active');
+// ===== HAMBURGER =====
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
 }
+function closeMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
+// ===== SCROLL REVEAL =====
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+
+// ===== ACTIVE NAV ON SCROLL =====
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a, .mobile-bottombar a');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 100) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.classList.remove('active');
+    if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+  });
+
+  // Back to top
+  document.getElementById('backTop').classList.toggle('show', window.scrollY > 400);
+}, { passive: true });
 </script>
+</body>
+</html>
